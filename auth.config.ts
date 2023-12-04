@@ -9,13 +9,20 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        if (isLoggedIn){
+            console.log('ログイン済み');
+            return true;
+        }else{
+            console.log('Redirect unauthenticated users to login page');
+            return false;
+        }
       } else if (isLoggedIn) {
+        console.log('ログイン済みなので dashboard へのリダイレクトを許可する');
         return Response.redirect(new URL('/dashboard', nextUrl));
       }
+      console.log('初期ログイン')
       return true;
     },
   },
   providers: [], // Add providers with an empty array for now
-} satisfies NextAuthConfig; 
+} satisfies NextAuthConfig;

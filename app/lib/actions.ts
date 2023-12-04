@@ -146,8 +146,10 @@ export async function createInvoice(prevState: State, formData: FormData) {
       if (error instanceof AuthError) {
         switch (error.type) {
           case 'CredentialsSignin':
+            console.log('Invalid credentials.');
             return 'Invalid credentials.';
           default:
+            console.log('Something went wrong.');
             return 'Something went wrong.';
         }
       }
