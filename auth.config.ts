@@ -20,7 +20,8 @@ export const authConfig = {
         console.log('ログイン済みなので dashboard へのリダイレクトを許可する');
         return Response.redirect(new URL('/dashboard', nextUrl));
       }
-      console.log('初期ログイン')
+      console.log('未ログイン')
+      console.log(auth?.user);
       return true;
     },
   },
